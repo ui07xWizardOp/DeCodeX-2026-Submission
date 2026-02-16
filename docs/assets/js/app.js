@@ -383,16 +383,7 @@ function renderTable(page) {
             </td>
         </tr>
     `).join('');
-    renderTable(currentPage);
-}
-    });
-
-document.getElementById('btn-next').addEventListener('click', () => {
-    if (currentPage * CONFIG.itemsPerPage < rawTableData.length) {
-        currentPage++;
-        renderTable(currentPage);
-    }
-});
+    setupPagination();
 }
 
 // Utility
