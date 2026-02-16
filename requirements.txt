@@ -1,0 +1,7 @@
+pandas>=2.0.0
+numpy>=1.24.0
+plotly>=5.15.0
+markdown>=3.4.0
+beautifulsoup4>=4.12.0
+jinja2>=3.1.0
+nbconvert>=7.0.0

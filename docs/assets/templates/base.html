@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | VoltRide Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        /* Report specific styles */
+        body {
+            background-color: var(--bg-core);
+            color: var(--text-main);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .report-container {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+            margin-top: 2rem;
+        }
+
+        a { color: var(--accent-primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        h1, h2, h3 { margin-top: 2rem; margin-bottom: 1rem; color: var(--text-main); }
+        h1 { font-size: 2.5rem; border-bottom: 2px solid var(--accent-primary); padding-bottom: 0.5rem; }
+        h2 { font-size: 1.8rem; border-left: 4px solid var(--accent-secondary); padding-left: 1rem; }
+        
+        code { background: rgba(0,0,0,0.3); padding: 0.2rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); color: var(--accent-warn); }
+        pre { background: #000; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+        pre code { background: none; color: #ccc; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        th { color: var(--accent-secondary); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; }
+        tr:hover { background: rgba(255,255,255,0.02); }
+
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-brand { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
+        .nav-links a { margin-left: 1.5rem; color: var(--text-muted); font-weight: 600; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent-primary); }
+        .nav-links a.active { color: var(--accent-primary); }
+        
+        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--text-muted); }
+        .back-link:hover { color: var(--text-main); }
+    </style>
+</head>
+<body>
+    <nav class="nav-header">
+        <div class="nav-brand">⚡ VoltRide <span style="color:var(--accent-primary)">Ops</span></div>
+        <div class="nav-links">
+            <a href="../index.html">Dashboard</a>
+            <a href="#" class="active">Report View</a>
+        </div>
+    </nav>
+
+    <div class="report-container">
+        <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        {{ content }}
+    </div>
+
+    <script>
+        // Add minimal interactivity if needed
+    </script>
+</body>
+</html>

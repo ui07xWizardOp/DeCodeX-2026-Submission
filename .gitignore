@@ -1,6 +1,26 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
 venv/
-.DS_Store
-*.tmp
+.venv/
+
+# Data (Exclude raw data to keep repo light, but keep calculated JSONs for GitHub Pages)
+*.xlsx
+*.csv
+# !docs/assets/data/*.json  <-- We want to commit these for GitHub Pages
+
+# IDE
 .vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Submission Artifacts (optional, depending on workflow)
+submission_package/
