@@ -92,3 +92,136 @@ h6 {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-primary);
 }
+
+/* Report View Styles (Moved from inline) */
+.report-container {
+    background: var(--bg-card);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    margin-top: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Typography Overrides for Reports */
+.report-container a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.report-container a:hover {
+    text-decoration: underline;
+}
+
+.report-container h1,
+.report-container h2,
+.report-container h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.report-container h1 {
+    font-size: 2.5rem;
+    border-bottom: 2px solid var(--accent-primary);
+    padding-bottom: 0.5rem;
+}
+
+.report-container h2 {
+    font-size: 1.8rem;
+    border-left: 4px solid var(--accent-secondary);
+    padding-left: 1rem;
+}
+
+.report-container code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    color: var(--accent-warn);
+}
+
+.report-container pre {
+    background: #000;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.report-container pre code {
+    background: none;
+    color: #ccc;
+}
+
+.report-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+}
+
+.report-container th,
+.report-container td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.report-container th {
+    color: var(--accent-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.report-container tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Navigation Styles */
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-brand {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.nav-links a {
+    margin-left: 1.5rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-primary);
+}
+
+.nav-links a.active {
+    color: var(--accent-primary);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+.back-link:hover {
+    color: var(--text-main);
+}
+
+.text-accent-primary {
+    color: var(--accent-primary);
+}
