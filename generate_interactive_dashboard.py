@@ -1,4 +1,92 @@
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+import plotly.io as pio
+import jinja2
+import json
+import os
+import numpy as np
 
+# Paths
+base_path = r'c:\Users\KIIT0001\Desktop\projects\DeCodeX'
+dataset_path = os.path.join(base_path, 'DecodeX_VoltRide_Dataset.xlsx')
+output_dir = os.path.join(base_path, 'Final_Submission', 'docs')
+os.makedirs(output_dir, exist_ok=True)
+final_html_path = os.path.join(output_dir, 'index.html')
+
+# Load Data
+print("Loading data...")
+ride_data = pd.read_excel(dataset_path, sheet_name='Ride_Level_Data')
+ride_data['is_cancelled'] = ride_data['Ride_Status'].apply(lambda x: 1 if x == 'Cancelled' else 0)
+
+# --- HELPER FUNCTION: GENERATE SEGMENT DATA ---
+def get_segment_data(df, city_name="All"):
+    total_rides = len(df)
+    if total_rides == 0: return None
+    
+    completion_rate = 1 - df['is_cancelled'].mean()
+    system_cancels = len(df[df['Cancellation_By'] == 'System'])
+    system_cancel_rate = system_cancels / total_rides
+    fleet_health = len(df[df['EV_Battery_%'] > 30]) / total_rides
+    
+    # 1. Trend Data
+    hourly_stats = df.groupby('Hour').agg({'Ride_Status': 'count', 'is_cancelled': 'sum'}).reset_index()
+    hourly_stats['Completed'] = hourly_stats['Ride_Status'] - hourly_stats['is_cancelled']
+    trend_chart = {
+        'hours': hourly_stats['Hour'].tolist(),
+        'demand': hourly_stats['Ride_Status'].tolist(),
+        'completed': hourly_stats['Completed'].tolist()
+    }
+    
+    # 2. Battery Cliff Data
+    df['Battery_Bin'] = pd.cut(df['EV_Battery_%'], bins=range(0, 101, 5))
+    cliff_grp = df.groupby('Battery_Bin', observed=True)['is_cancelled'].mean()
+    cliff_data = {
+        'x': [interval.mid for interval in cliff_grp.index],
+        'y': cliff_grp.values.tolist(),
+        'size': [v * 20 for v in cliff_grp.values.tolist()] # Scale size by prob
+    }
+    
+    # 3. Heatmap Data (Top 5 Zones by Risk)
+    risk_zone = df.groupby(['Pickup_Zone'])['is_cancelled'].mean().reset_index()
+    heatmap_data = {
+        'z': risk_zone['is_cancelled'].tolist(),
+        'x': risk_zone['Pickup_Zone'].tolist(),
+        'type': 'heatmap'
+    }
+
+    return {
+        'city': city_name,
+        'kpi': {
+            'completion_rate': f"{completion_rate:.1%}",
+            'system_cancel_rate': f"{system_cancel_rate:.1%}",
+            'fleet_health': f"{fleet_health:.0%}",
+        },
+        'charts': {
+            'trend': trend_chart,
+            'cliff': cliff_data,
+            'risk': heatmap_data
+        }
+    }
+
+# --- GENERATE GLOBAL DATA OBJECT ---
+print("Generating Global Data Object...")
+data_payload = {}
+
+# 1. All Cities
+data_payload['All'] = get_segment_data(ride_data, "All")
+
+# 2. Per City
+cities = ride_data['City'].unique()
+for city in cities:
+    data_payload[city] = get_segment_data(ride_data[ride_data['City'] == city], city)
+
+json_payload = json.dumps(data_payload)
+
+# --- HTML GENERATION ---
+print("Generating Interactive Dashboard...")
+
+html_template = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,15 +115,9 @@
             <div class="flex items-center space-x-4">
                  <select id="cityFilter" onchange="updateDashboard(this.value)" class="form-select block w-full bg-gray-50 border border-blue-300 text-blue-700 py-1 px-3 rounded leading-tight focus:outline-none focus:bg-white font-bold cursor-pointer hover:bg-blue-50">
                     <option value="All">City: All Markets</option>
-                    
-                    <option value="Hyderabad">Hyderabad</option>
-                    
-                    <option value="Mumbai">Mumbai</option>
-                    
-                    <option value="Delhi">Delhi</option>
-                    
-                    <option value="Bengaluru">Bengaluru</option>
-                    
+                    {% for city in cities %}
+                    <option value="{{ city }}">{{ city }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>
@@ -105,7 +187,7 @@
 
     <script>
         // --- EMBEDDED DATA ---
-        const dashboardData = {"All": {"city": "All", "kpi": {"completion_rate": "70.4%", "system_cancel_rate": "6.1%", "fleet_health": "83%"}, "charts": {"trend": {"hours": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], "demand": [107, 85, 96, 124, 94, 100, 102, 108, 97, 100, 127, 99, 105, 120, 109, 106, 102, 100, 105, 100, 105, 106, 88, 115], "completed": [74, 62, 70, 85, 70, 65, 76, 67, 74, 80, 84, 65, 78, 89, 77, 73, 70, 71, 74, 74, 66, 74, 65, 78]}, "cliff": {"x": [12.5, 17.5, 22.5, 27.5, 32.5, 37.5, 42.5, 47.5, 52.5, 57.5, 62.5, 67.5, 72.5, 77.5, 82.5, 87.5, 92.5, 97.5], "y": [1.0, 0.8503937007874016, 0.26666666666666666, 0.23703703703703705, 0.2, 0.2716049382716049, 0.25, 0.23026315789473684, 0.27049180327868855, 0.24242424242424243, 0.23648648648648649, 0.3028169014084507, 0.27564102564102566, 0.2389937106918239, 0.2808988764044944, 0.24, 0.2847682119205298, 0.304], "size": [20.0, 17.007874015748033, 5.333333333333333, 4.7407407407407405, 4.0, 5.432098765432098, 5.0, 4.605263157894736, 5.409836065573771, 4.848484848484849, 4.72972972972973, 6.056338028169014, 5.512820512820513, 4.779874213836478, 5.617977528089888, 4.8, 5.695364238410596, 6.08]}, "risk": {"z": [0.2757352941176471, 0.27848101265822783, 0.27906976744186046, 0.3114754098360656, 0.30833333333333335, 0.2791666666666667, 0.32971014492753625, 0.3054393305439331, 0.33992094861660077, 0.24481327800829875], "x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "type": "heatmap"}}}, "Hyderabad": {"city": "Hyderabad", "kpi": {"completion_rate": "68.6%", "system_cancel_rate": "6.3%", "fleet_health": "83%"}, "charts": {"trend": {"hours": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], "demand": [22, 21, 28, 32, 17, 20, 31, 36, 24, 20, 32, 33, 23, 31, 21, 23, 17, 23, 20, 29, 23, 19, 22, 32], "completed": [14, 18, 19, 23, 13, 12, 23, 19, 19, 14, 20, 19, 17, 20, 17, 16, 11, 16, 15, 21, 14, 13, 18, 20]}, "cliff": {"x": [12.5, 17.5, 22.5, 27.5, 32.5, 37.5, 42.5, 47.5, 52.5, 57.5, 62.5, 67.5, 72.5, 77.5, 82.5, 87.5, 92.5, 97.5], "y": [1.0, 0.875, 0.34146341463414637, 0.391304347826087, 0.1794871794871795, 0.21739130434782608, 0.28125, 0.3157894736842105, 0.19230769230769232, 0.4, 0.2647058823529412, 0.30303030303030304, 0.21621621621621623, 0.20930232558139536, 0.3, 0.2, 0.3488372093023256, 0.2727272727272727], "size": [20.0, 17.5, 6.829268292682928, 7.826086956521739, 3.58974358974359, 4.3478260869565215, 5.625, 6.315789473684211, 3.8461538461538463, 8.0, 5.294117647058823, 6.0606060606060606, 4.324324324324325, 4.186046511627907, 6.0, 4.0, 6.976744186046512, 5.454545454545454]}, "risk": {"z": [0.2361111111111111, 0.3269230769230769, 0.3442622950819672, 0.40625, 0.3617021276595745, 0.19117647058823528, 0.35714285714285715, 0.32786885245901637, 0.35185185185185186, 0.26], "x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "type": "heatmap"}}}, "Mumbai": {"city": "Mumbai", "kpi": {"completion_rate": "71.8%", "system_cancel_rate": "5.0%", "fleet_health": "82%"}, "charts": {"trend": {"hours": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], "demand": [34, 21, 21, 35, 19, 16, 23, 22, 24, 29, 29, 26, 34, 36, 31, 27, 23, 30, 27, 28, 27, 27, 19, 30], "completed": [25, 13, 15, 25, 14, 12, 20, 17, 21, 24, 18, 19, 22, 25, 19, 16, 17, 20, 21, 25, 18, 17, 13, 22]}, "cliff": {"x": [12.5, 17.5, 22.5, 27.5, 32.5, 37.5, 42.5, 47.5, 52.5, 57.5, 62.5, 67.5, 72.5, 77.5, 82.5, 87.5, 92.5, 97.5], "y": [1.0, 0.875, 0.21621621621621623, 0.16666666666666666, 0.225, 0.2972972972972973, 0.2631578947368421, 0.15151515151515152, 0.23529411764705882, 0.13793103448275862, 0.16666666666666666, 0.2631578947368421, 0.2682926829268293, 0.2972972972972973, 0.30612244897959184, 0.2903225806451613, 0.25, 0.40540540540540543], "size": [20.0, 17.5, 4.324324324324325, 3.333333333333333, 4.5, 5.9459459459459465, 5.263157894736842, 3.0303030303030303, 4.705882352941177, 2.7586206896551726, 3.333333333333333, 5.263157894736842, 5.365853658536586, 5.9459459459459465, 6.122448979591837, 5.806451612903226, 5.0, 8.108108108108109]}, "risk": {"z": [0.25, 0.2753623188405797, 0.3181818181818182, 0.20833333333333334, 0.31343283582089554, 0.3275862068965517, 0.3076923076923077, 0.3389830508474576, 0.31666666666666665, 0.16129032258064516], "x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "type": "heatmap"}}}, "Delhi": {"city": "Delhi", "kpi": {"completion_rate": "71.2%", "system_cancel_rate": "6.6%", "fleet_health": "84%"}, "charts": {"trend": {"hours": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], "demand": [28, 19, 25, 28, 29, 32, 20, 20, 25, 27, 34, 19, 25, 29, 32, 26, 29, 30, 31, 27, 29, 29, 18, 21], "completed": [20, 16, 20, 15, 20, 20, 12, 12, 18, 24, 25, 16, 21, 22, 24, 18, 19, 23, 21, 17, 16, 22, 14, 15]}, "cliff": {"x": [12.5, 17.5, 22.5, 27.5, 32.5, 37.5, 42.5, 47.5, 52.5, 57.5, 62.5, 67.5, 72.5, 77.5, 82.5, 87.5, 92.5, 97.5], "y": [1.0, 0.8787878787878788, 0.23529411764705882, 0.1875, 0.21951219512195122, 0.2702702702702703, 0.2222222222222222, 0.21739130434782608, 0.34146341463414637, 0.22857142857142856, 0.2, 0.3333333333333333, 0.3076923076923077, 0.2647058823529412, 0.2391304347826087, 0.29411764705882354, 0.21621621621621623, 0.25], "size": [20.0, 17.575757575757574, 4.705882352941177, 3.75, 4.390243902439025, 5.405405405405405, 4.444444444444445, 4.3478260869565215, 6.829268292682928, 4.571428571428571, 4.0, 6.666666666666666, 6.153846153846154, 5.294117647058823, 4.782608695652174, 5.882352941176471, 4.324324324324325, 5.0]}, "risk": {"z": [0.359375, 0.3103448275862069, 0.19444444444444445, 0.18461538461538463, 0.3442622950819672, 0.24, 0.2571428571428571, 0.3018867924528302, 0.36486486486486486, 0.3230769230769231], "x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "type": "heatmap"}}}, "Bengaluru": {"city": "Bengaluru", "kpi": {"completion_rate": "70.0%", "system_cancel_rate": "6.5%", "fleet_health": "81%"}, "charts": {"trend": {"hours": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], "demand": [23, 24, 22, 29, 29, 32, 28, 30, 24, 24, 32, 21, 23, 24, 25, 30, 33, 17, 27, 16, 26, 31, 29, 32], "completed": [15, 15, 16, 22, 23, 21, 21, 19, 16, 18, 21, 11, 18, 22, 17, 23, 23, 12, 17, 11, 18, 22, 20, 21]}, "cliff": {"x": [12.5, 17.5, 22.5, 27.5, 32.5, 37.5, 42.5, 47.5, 52.5, 57.5, 62.5, 67.5, 72.5, 77.5, 82.5, 87.5, 92.5, 97.5], "y": [1.0, 0.7894736842105263, 0.2631578947368421, 0.2631578947368421, 0.17142857142857143, 0.30952380952380953, 0.24, 0.22857142857142856, 0.2857142857142857, 0.18181818181818182, 0.32432432432432434, 0.3157894736842105, 0.3076923076923077, 0.2, 0.27906976744186046, 0.16666666666666666, 0.3225806451612903, 0.26666666666666666], "size": [20.0, 15.789473684210527, 5.263157894736842, 5.263157894736842, 3.428571428571429, 6.190476190476191, 4.8, 4.571428571428571, 5.7142857142857135, 3.6363636363636367, 6.486486486486487, 6.315789473684211, 6.153846153846154, 4.0, 5.5813953488372094, 3.333333333333333, 6.451612903225806, 5.333333333333333]}, "risk": {"z": [0.2692307692307692, 0.20689655172413793, 0.2711864406779661, 0.417910447761194, 0.23076923076923078, 0.359375, 0.39436619718309857, 0.25757575757575757, 0.3230769230769231, 0.234375], "x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "type": "heatmap"}}}};
+        const dashboardData = {{ json_payload | safe }};
         
         // --- DASHBOARD CONTROLLER ---
         function updateDashboard(city) {
@@ -174,3 +256,17 @@
     </script>
 </body>
 </html>
+"""
+
+# Render Template
+template = jinja2.Template(html_template)
+html_content = template.render(
+    json_payload=json_payload,
+    cities=cities
+)
+
+with open(final_html_path, 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print(f"Interactive Dashboard Generated at: {final_html_path}")
+print(f"Payload Size: {len(json_payload)/1024:.2f} KB")
