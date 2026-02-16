@@ -67,7 +67,16 @@ def generate_full_data():
     infra_no_total = 0; infra_no_cancelled = 0
     infra_yes_total = 0; infra_yes_cancelled = 0
 
-    # Data Explorer (First 100 rows)
+    # New Analytics Aggregators
+    weather_stats = {} # { Condition: {total: 0, cancelled: 0} }
+    surge_stats = {}   # { Multiplier: {total: 0, cancelled: 0} }
+    driver_stats = {"Available": {"total": 0, "cancelled": 0}, "Unavailable": {"total": 0, "cancelled": 0}}
+    city_stats = {}    # { City: {total: 0, cancelled: 0} }
+    distance_bins_total = [0] * 5 # 0-5, 5-10, 10-15, 15-20, 20+
+    distance_bins_cancelled = [0] * 5
+    dist_labels = ["0-5km", "5-10km", "10-15km", "15-20km", "20km+"]
+
+    # Data Explorer (First 2500 rows - ALL for client side filtering)
     raw_data = []
 
     rows = sheet.iter_rows(min_row=2, values_only=True)
@@ -86,6 +95,10 @@ def generate_full_data():
             station = str(row[COL_STATION_NEARBY])
             status = str(row[COL_STATUS])
             fare = float(row[COL_FARE]) if row[COL_FARE] is not None else 0
+            weather = str(row[COL_WEATHER])
+            surge = float(row[COL_SURGE]) if row[COL_SURGE] is not None else 1.0
+            driver_avail = str(row[COL_DRIVER_AVAIL])
+            distance = float(row[COL_DISTANCE]) if row[COL_DISTANCE] is not None else 0
         except (ValueError, IndexError, TypeError):
             continue # specific row error
 
@@ -140,15 +153,49 @@ def generate_full_data():
             infra_yes_total += 1
             infra_yes_cancelled += is_cancelled
 
-        # Raw Data (Top 100)
-        if len(raw_data) < 100:
+        # Weather Stats
+        if weather not in weather_stats: weather_stats[weather] = {"total": 0, "cancelled": 0}
+        weather_stats[weather]["total"] += 1
+        weather_stats[weather]["cancelled"] += is_cancelled
+
+        # Surge Stats (Round to nearest 0.5 for binning)
+        surge_bin = round(surge * 2) / 2
+        if surge_bin not in surge_stats: surge_stats[surge_bin] = {"total": 0, "cancelled": 0}
+        surge_stats[surge_bin]["total"] += 1
+        surge_stats[surge_bin]["cancelled"] += is_cancelled
+
+        # Driver Stats
+        d_key = "Available" if "Yes" in driver_avail else "Unavailable"
+        driver_stats[d_key]["total"] += 1
+        driver_stats[d_key]["cancelled"] += is_cancelled
+
+        # City Stats
+        if city not in city_stats: city_stats[city] = {"total": 0, "cancelled": 0}
+        city_stats[city]["total"] += 1
+        city_stats[city]["cancelled"] += is_cancelled
+
+        # Distance Bins
+        d_bin_idx = 0
+        if distance < 5: d_bin_idx = 0
+        elif distance < 10: d_bin_idx = 1
+        elif distance < 15: d_bin_idx = 2
+        elif distance < 20: d_bin_idx = 3
+        else: d_bin_idx = 4
+        distance_bins_total[d_bin_idx] += 1
+        distance_bins_cancelled[d_bin_idx] += is_cancelled
+
+        # Raw Data (Limit to 2500 for JSON file size safety, but fits in memory easily)
+        if len(raw_data) < 2500:
             raw_data.append({
                 "id": row[COL_RIDE_ID],
                 "city": city,
                 "hour": hour,
                 "zone": zone,
                 "battery": battery,
-                "status": status
+                "status": status,
+                "weather": weather,
+                "surge": surge,
+                "fare": fare
             })
 
     # Calculations
@@ -196,6 +243,43 @@ def generate_full_data():
     infra_no_rate = (infra_no_cancelled / infra_no_total * 100) if infra_no_total else 0
     infra_yes_rate = (infra_yes_cancelled / infra_yes_total * 100) if infra_yes_total else 0
 
+    # Weather
+    weather_labels = sorted(weather_stats.keys())
+    weather_vals = []
+    for w in weather_labels:
+        tot = weather_stats[w]["total"]
+        canc = weather_stats[w]["cancelled"]
+        weather_vals.append(round((canc/tot*100) if tot else 0, 1))
+
+    # Surge
+    surge_labels = sorted(surge_stats.keys())
+    surge_vals = []
+    for s in surge_labels:
+        tot = surge_stats[s]["total"]
+        canc = surge_stats[s]["cancelled"]
+        surge_vals.append(round((canc/tot*100) if tot else 0, 1))
+
+    # Driver
+    driver_labels = ["Available", "Unavailable"]
+    driver_vals = [
+        round((driver_stats["Available"]["cancelled"] / driver_stats["Available"]["total"] * 100) if driver_stats["Available"]["total"] else 0, 1),
+        round((driver_stats["Unavailable"]["cancelled"] / driver_stats["Unavailable"]["total"] * 100) if driver_stats["Unavailable"]["total"] else 0, 1)
+    ]
+
+    # Distance
+    distance_vals = []
+    for i in range(5):
+        rate = (distance_bins_cancelled[i] / distance_bins_total[i] * 100) if distance_bins_total[i] else 0
+        distance_vals.append(round(rate, 1))
+        
+    # City
+    city_labels = sorted(city_stats.keys())
+    city_vals = []
+    for c in city_labels:
+        tot = city_stats[c]["total"]
+        canc = city_stats[c]["cancelled"]
+        city_vals.append(round((canc/tot*100) if tot else 0, 1))
+
     charts = {
         "battery_cliff": {
             "labels": bin_labels,
@@ -219,6 +303,26 @@ def generate_full_data():
         "infra_paradox": {
             "labels": ["No Station", "Station Nearby"],
             "values": [round(infra_no_rate, 1), round(infra_yes_rate, 1)]
+        },
+        "weather_impact": {
+            "labels": weather_labels,
+            "values": weather_vals
+        },
+        "surge_impact": {
+            "labels": surge_labels,
+            "values": surge_vals
+        },
+        "driver_gap": {
+            "labels": driver_labels,
+            "values": driver_vals
+        },
+        "distance_impact": {
+            "labels": dist_labels,
+            "values": distance_vals
+        },
+        "city_impact": {
+            "labels": city_labels,
+            "values": city_vals
         }
     }
 
@@ -228,6 +332,7 @@ def generate_full_data():
     with open(os.path.join(OUTPUT_DIR, "metrics.json"), "w") as f:
         json.dump(metrics, f, indent=2)
         
+    print(f"Charts keys: {list(charts.keys())}")
     with open(os.path.join(OUTPUT_DIR, "charts.json"), "w") as f:
         json.dump(charts, f, indent=2)
         
