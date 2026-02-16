@@ -1,24 +1,33 @@
 :root {
-  /* Electric Insight Theme Palette */
-  --bg-core: #0f172a;      /* Slate 900 */
-  --bg-card: #1e293b;      /* Slate 800 */
-  --bg-overlay: rgba(15, 23, 42, 0.85);
-  
-  --accent-primary: #3b82f6; /* Blue 500 */
-  --accent-secondary: #0ea5e9; /* Sky 500 */
-  --accent-success: #10b981; /* Emerald 500 */
-  --accent-danger: #ef4444;  /* Red 500 */
-  --accent-warn: #f59e0b;    /* Amber 500 */
-  
-  --text-main: #f8fafc;      /* Slate 50 */
-  --text-muted: #94a3b8;     /* Slate 400 */
-  
-  --shadow-glow: 0 0 15px rgba(59, 130, 246, 0.3);
-  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+    /* Electric Insight Theme Palette */
+    --bg-core: #0f172a;
+    /* Slate 900 */
+    --bg-card: #1e293b;
+    /* Slate 800 */
+    --bg-overlay: rgba(15, 23, 42, 0.85);
+
+    --accent-primary: #3b82f6;
+    /* Blue 500 */
+    --accent-secondary: #0ea5e9;
+    /* Sky 500 */
+    --accent-success: #10b981;
+    /* Emerald 500 */
+    --accent-danger: #ef4444;
+    /* Red 500 */
+    --accent-warn: #f59e0b;
+    /* Amber 500 */
+
+    --text-main: #f8fafc;
+    /* Slate 50 */
+    --text-muted: #94a3b8;
+    /* Slate 400 */
+
+    --shadow-glow: 0 0 15px rgba(59, 130, 246, 0.3);
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
 * {
@@ -35,7 +44,12 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-heading);
     font-weight: 700;
     color: var(--text-main);
@@ -43,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .glass-panel {
     background: rgba(30, 41, 59, 0.7);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: var(--shadow-card);
@@ -51,6 +66,7 @@ h1, h2, h3, h4, h5, h6 {
 .text-gradient {
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -63,13 +79,16 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar {
     width: 8px;
 }
+
 ::-webkit-scrollbar-track {
     background: var(--bg-core);
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--bg-card);
     border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-primary);
 }

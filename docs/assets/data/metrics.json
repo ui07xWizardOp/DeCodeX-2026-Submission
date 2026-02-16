@@ -1,0 +1,10 @@
+{
+  "kpis": {
+    "kill_zone_rate": 0.0,
+    "baseline_rate": 0.0,
+    "revenue_loss": 0,
+    "goldilocks_rate": 0,
+    "total_demand": 2500,
+    "completed_rides": 2500
+  }
+}

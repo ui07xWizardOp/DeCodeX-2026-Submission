@@ -1,0 +1,802 @@
+[
+  {
+    "id": 1.0,
+    "city": "Hyderabad",
+    "hour": 5,
+    "zone": "8.0",
+    "battery": 3.0,
+    "status": "29.0"
+  },
+  {
+    "id": 2.0,
+    "city": "Mumbai",
+    "hour": 13,
+    "zone": "5.0",
+    "battery": 4.0,
+    "status": "61.0"
+  },
+  {
+    "id": 3.0,
+    "city": "Delhi",
+    "hour": 11,
+    "zone": "5.0",
+    "battery": 5.0,
+    "status": "30.0"
+  },
+  {
+    "id": 4.0,
+    "city": "Bengaluru",
+    "hour": 22,
+    "zone": "9.0",
+    "battery": 7.0,
+    "status": "17.0"
+  },
+  {
+    "id": 5.0,
+    "city": "Hyderabad",
+    "hour": 19,
+    "zone": "5.0",
+    "battery": 2.0,
+    "status": "34.0"
+  },
+  {
+    "id": 6.0,
+    "city": "Hyderabad",
+    "hour": 2,
+    "zone": "4.0",
+    "battery": 10.0,
+    "status": "84.0"
+  },
+  {
+    "id": 7.0,
+    "city": "Hyderabad",
+    "hour": 23,
+    "zone": "5.0",
+    "battery": 9.0,
+    "status": "98.0"
+  },
+  {
+    "id": 8.0,
+    "city": "Hyderabad",
+    "hour": 23,
+    "zone": "4.0",
+    "battery": 1.0,
+    "status": "63.0"
+  },
+  {
+    "id": 9.0,
+    "city": "Mumbai",
+    "hour": 23,
+    "zone": "4.0",
+    "battery": 9.0,
+    "status": "87.0"
+  },
+  {
+    "id": 10.0,
+    "city": "Delhi",
+    "hour": 9,
+    "zone": "8.0",
+    "battery": 6.0,
+    "status": "95.0"
+  },
+  {
+    "id": 11.0,
+    "city": "Bengaluru",
+    "hour": 2,
+    "zone": "8.0",
+    "battery": 4.0,
+    "status": "57.0"
+  },
+  {
+    "id": 12.0,
+    "city": "Hyderabad",
+    "hour": 18,
+    "zone": "2.0",
+    "battery": 5.0,
+    "status": "80.0"
+  },
+  {
+    "id": 13.0,
+    "city": "Mumbai",
+    "hour": 13,
+    "zone": "2.0",
+    "battery": 8.0,
+    "status": "77.0"
+  },
+  {
+    "id": 14.0,
+    "city": "Delhi",
+    "hour": 6,
+    "zone": "1.0",
+    "battery": 3.0,
+    "status": "71.0"
+  },
+  {
+    "id": 15.0,
+    "city": "Bengaluru",
+    "hour": 8,
+    "zone": "1.0",
+    "battery": 6.0,
+    "status": "22.0"
+  },
+  {
+    "id": 16.0,
+    "city": "Bengaluru",
+    "hour": 16,
+    "zone": "7.0",
+    "battery": 10.0,
+    "status": "56.0"
+  },
+  {
+    "id": 17.0,
+    "city": "Bengaluru",
+    "hour": 6,
+    "zone": "1.0",
+    "battery": 10.0,
+    "status": "93.0"
+  },
+  {
+    "id": 18.0,
+    "city": "Mumbai",
+    "hour": 5,
+    "zone": "9.0",
+    "battery": 7.0,
+    "status": "79.0"
+  },
+  {
+    "id": 19.0,
+    "city": "Hyderabad",
+    "hour": 12,
+    "zone": "10.0",
+    "battery": 3.0,
+    "status": "85.0"
+  },
+  {
+    "id": 20.0,
+    "city": "Bengaluru",
+    "hour": 15,
+    "zone": "3.0",
+    "battery": 10.0,
+    "status": "91.0"
+  },
+  {
+    "id": 21.0,
+    "city": "Mumbai",
+    "hour": 1,
+    "zone": "8.0",
+    "battery": 4.0,
+    "status": "67.0"
+  },
+  {
+    "id": 22.0,
+    "city": "Mumbai",
+    "hour": 8,
+    "zone": "7.0",
+    "battery": 10.0,
+    "status": "83.0"
+  },
+  {
+    "id": 23.0,
+    "city": "Hyderabad",
+    "hour": 8,
+    "zone": "8.0",
+    "battery": 1.0,
+    "status": "75.0"
+  },
+  {
+    "id": 24.0,
+    "city": "Hyderabad",
+    "hour": 6,
+    "zone": "2.0",
+    "battery": 2.0,
+    "status": "88.0"
+  },
+  {
+    "id": 25.0,
+    "city": "Mumbai",
+    "hour": 9,
+    "zone": "4.0",
+    "battery": 9.0,
+    "status": "65.0"
+  },
+  {
+    "id": 26.0,
+    "city": "Mumbai",
+    "hour": 5,
+    "zone": "10.0",
+    "battery": 6.0,
+    "status": "95.0"
+  },
+  {
+    "id": 27.0,
+    "city": "Hyderabad",
+    "hour": 13,
+    "zone": "2.0",
+    "battery": 4.0,
+    "status": "52.0"
+  },
+  {
+    "id": 28.0,
+    "city": "Hyderabad",
+    "hour": 0,
+    "zone": "3.0",
+    "battery": 3.0,
+    "status": "63.0"
+  },
+  {
+    "id": 29.0,
+    "city": "Bengaluru",
+    "hour": 21,
+    "zone": "3.0",
+    "battery": 6.0,
+    "status": "45.0"
+  },
+  {
+    "id": 30.0,
+    "city": "Bengaluru",
+    "hour": 10,
+    "zone": "6.0",
+    "battery": 3.0,
+    "status": "80.0"
+  },
+  {
+    "id": 31.0,
+    "city": "Hyderabad",
+    "hour": 0,
+    "zone": "7.0",
+    "battery": 2.0,
+    "status": "68.0"
+  },
+  {
+    "id": 32.0,
+    "city": "Mumbai",
+    "hour": 13,
+    "zone": "2.0",
+    "battery": 10.0,
+    "status": "23.0"
+  },
+  {
+    "id": 33.0,
+    "city": "Mumbai",
+    "hour": 18,
+    "zone": "4.0",
+    "battery": 7.0,
+    "status": "75.0"
+  },
+  {
+    "id": 34.0,
+    "city": "Hyderabad",
+    "hour": 6,
+    "zone": "2.0",
+    "battery": 5.0,
+    "status": "95.0"
+  },
+  {
+    "id": 35.0,
+    "city": "Delhi",
+    "hour": 10,
+    "zone": "1.0",
+    "battery": 1.0,
+    "status": "27.0"
+  },
+  {
+    "id": 36.0,
+    "city": "Mumbai",
+    "hour": 19,
+    "zone": "3.0",
+    "battery": 9.0,
+    "status": "65.0"
+  },
+  {
+    "id": 37.0,
+    "city": "Mumbai",
+    "hour": 23,
+    "zone": "10.0",
+    "battery": 5.0,
+    "status": "88.0"
+  },
+  {
+    "id": 38.0,
+    "city": "Hyderabad",
+    "hour": 6,
+    "zone": "3.0",
+    "battery": 8.0,
+    "status": "61.0"
+  },
+  {
+    "id": 39.0,
+    "city": "Delhi",
+    "hour": 16,
+    "zone": "6.0",
+    "battery": 4.0,
+    "status": "51.0"
+  },
+  {
+    "id": 40.0,
+    "city": "Mumbai",
+    "hour": 23,
+    "zone": "8.0",
+    "battery": 3.0,
+    "status": "66.0"
+  },
+  {
+    "id": 41.0,
+    "city": "Hyderabad",
+    "hour": 8,
+    "zone": "10.0",
+    "battery": 8.0,
+    "status": "45.0"
+  },
+  {
+    "id": 42.0,
+    "city": "Delhi",
+    "hour": 13,
+    "zone": "3.0",
+    "battery": 4.0,
+    "status": "34.0"
+  },
+  {
+    "id": 43.0,
+    "city": "Mumbai",
+    "hour": 20,
+    "zone": "5.0",
+    "battery": 9.0,
+    "status": "93.0"
+  },
+  {
+    "id": 44.0,
+    "city": "Bengaluru",
+    "hour": 7,
+    "zone": "7.0",
+    "battery": 8.0,
+    "status": "87.0"
+  },
+  {
+    "id": 45.0,
+    "city": "Mumbai",
+    "hour": 18,
+    "zone": "10.0",
+    "battery": 3.0,
+    "status": "83.0"
+  },
+  {
+    "id": 46.0,
+    "city": "Delhi",
+    "hour": 8,
+    "zone": "4.0",
+    "battery": 10.0,
+    "status": "30.0"
+  },
+  {
+    "id": 47.0,
+    "city": "Bengaluru",
+    "hour": 17,
+    "zone": "3.0",
+    "battery": 6.0,
+    "status": "19.0"
+  },
+  {
+    "id": 48.0,
+    "city": "Bengaluru",
+    "hour": 2,
+    "zone": "7.0",
+    "battery": 6.0,
+    "status": "43.0"
+  },
+  {
+    "id": 49.0,
+    "city": "Mumbai",
+    "hour": 0,
+    "zone": "6.0",
+    "battery": 1.0,
+    "status": "99.0"
+  },
+  {
+    "id": 50.0,
+    "city": "Bengaluru",
+    "hour": 5,
+    "zone": "9.0",
+    "battery": 6.0,
+    "status": "34.0"
+  },
+  {
+    "id": 51.0,
+    "city": "Delhi",
+    "hour": 9,
+    "zone": "2.0",
+    "battery": 7.0,
+    "status": "33.0"
+  },
+  {
+    "id": 52.0,
+    "city": "Hyderabad",
+    "hour": 4,
+    "zone": "3.0",
+    "battery": 9.0,
+    "status": "95.0"
+  },
+  {
+    "id": 53.0,
+    "city": "Hyderabad",
+    "hour": 19,
+    "zone": "6.0",
+    "battery": 8.0,
+    "status": "89.0"
+  },
+  {
+    "id": 54.0,
+    "city": "Hyderabad",
+    "hour": 15,
+    "zone": "2.0",
+    "battery": 1.0,
+    "status": "18.0"
+  },
+  {
+    "id": 55.0,
+    "city": "Mumbai",
+    "hour": 1,
+    "zone": "9.0",
+    "battery": 4.0,
+    "status": "40.0"
+  },
+  {
+    "id": 56.0,
+    "city": "Hyderabad",
+    "hour": 13,
+    "zone": "5.0",
+    "battery": 2.0,
+    "status": "60.0"
+  },
+  {
+    "id": 57.0,
+    "city": "Mumbai",
+    "hour": 20,
+    "zone": "2.0",
+    "battery": 7.0,
+    "status": "66.0"
+  },
+  {
+    "id": 58.0,
+    "city": "Delhi",
+    "hour": 14,
+    "zone": "3.0",
+    "battery": 10.0,
+    "status": "41.0"
+  },
+  {
+    "id": 59.0,
+    "city": "Mumbai",
+    "hour": 16,
+    "zone": "2.0",
+    "battery": 6.0,
+    "status": "88.0"
+  },
+  {
+    "id": 60.0,
+    "city": "Mumbai",
+    "hour": 19,
+    "zone": "8.0",
+    "battery": 9.0,
+    "status": "34.0"
+  },
+  {
+    "id": 61.0,
+    "city": "Bengaluru",
+    "hour": 12,
+    "zone": "5.0",
+    "battery": 5.0,
+    "status": "70.0"
+  },
+  {
+    "id": 62.0,
+    "city": "Hyderabad",
+    "hour": 12,
+    "zone": "5.0",
+    "battery": 9.0,
+    "status": "79.0"
+  },
+  {
+    "id": 63.0,
+    "city": "Delhi",
+    "hour": 15,
+    "zone": "1.0",
+    "battery": 7.0,
+    "status": "90.0"
+  },
+  {
+    "id": 64.0,
+    "city": "Mumbai",
+    "hour": 17,
+    "zone": "5.0",
+    "battery": 5.0,
+    "status": "33.0"
+  },
+  {
+    "id": 65.0,
+    "city": "Mumbai",
+    "hour": 18,
+    "zone": "4.0",
+    "battery": 7.0,
+    "status": "34.0"
+  },
+  {
+    "id": 66.0,
+    "city": "Mumbai",
+    "hour": 0,
+    "zone": "6.0",
+    "battery": 7.0,
+    "status": "42.0"
+  },
+  {
+    "id": 67.0,
+    "city": "Hyderabad",
+    "hour": 21,
+    "zone": "10.0",
+    "battery": 3.0,
+    "status": "78.0"
+  },
+  {
+    "id": 68.0,
+    "city": "Hyderabad",
+    "hour": 7,
+    "zone": "5.0",
+    "battery": 9.0,
+    "status": "90.0"
+  },
+  {
+    "id": 69.0,
+    "city": "Bengaluru",
+    "hour": 21,
+    "zone": "4.0",
+    "battery": 2.0,
+    "status": "89.0"
+  },
+  {
+    "id": 70.0,
+    "city": "Delhi",
+    "hour": 15,
+    "zone": "5.0",
+    "battery": 5.0,
+    "status": "74.0"
+  },
+  {
+    "id": 71.0,
+    "city": "Hyderabad",
+    "hour": 2,
+    "zone": "8.0",
+    "battery": 7.0,
+    "status": "33.0"
+  },
+  {
+    "id": 72.0,
+    "city": "Mumbai",
+    "hour": 9,
+    "zone": "8.0",
+    "battery": 7.0,
+    "status": "33.0"
+  },
+  {
+    "id": 73.0,
+    "city": "Delhi",
+    "hour": 1,
+    "zone": "3.0",
+    "battery": 6.0,
+    "status": "48.0"
+  },
+  {
+    "id": 74.0,
+    "city": "Hyderabad",
+    "hour": 23,
+    "zone": "7.0",
+    "battery": 3.0,
+    "status": "74.0"
+  },
+  {
+    "id": 75.0,
+    "city": "Hyderabad",
+    "hour": 22,
+    "zone": "7.0",
+    "battery": 8.0,
+    "status": "16.0"
+  },
+  {
+    "id": 76.0,
+    "city": "Mumbai",
+    "hour": 20,
+    "zone": "3.0",
+    "battery": 5.0,
+    "status": "69.0"
+  },
+  {
+    "id": 77.0,
+    "city": "Hyderabad",
+    "hour": 14,
+    "zone": "7.0",
+    "battery": 3.0,
+    "status": "81.0"
+  },
+  {
+    "id": 78.0,
+    "city": "Mumbai",
+    "hour": 6,
+    "zone": "2.0",
+    "battery": 6.0,
+    "status": "53.0"
+  },
+  {
+    "id": 79.0,
+    "city": "Delhi",
+    "hour": 13,
+    "zone": "10.0",
+    "battery": 9.0,
+    "status": "78.0"
+  },
+  {
+    "id": 80.0,
+    "city": "Mumbai",
+    "hour": 11,
+    "zone": "3.0",
+    "battery": 7.0,
+    "status": "88.0"
+  },
+  {
+    "id": 81.0,
+    "city": "Hyderabad",
+    "hour": 13,
+    "zone": "2.0",
+    "battery": 4.0,
+    "status": "61.0"
+  },
+  {
+    "id": 82.0,
+    "city": "Delhi",
+    "hour": 3,
+    "zone": "6.0",
+    "battery": 8.0,
+    "status": "79.0"
+  },
+  {
+    "id": 83.0,
+    "city": "Hyderabad",
+    "hour": 7,
+    "zone": "5.0",
+    "battery": 10.0,
+    "status": "50.0"
+  },
+  {
+    "id": 84.0,
+    "city": "Hyderabad",
+    "hour": 13,
+    "zone": "6.0",
+    "battery": 1.0,
+    "status": "67.0"
+  },
+  {
+    "id": 85.0,
+    "city": "Hyderabad",
+    "hour": 18,
+    "zone": "9.0",
+    "battery": 10.0,
+    "status": "50.0"
+  },
+  {
+    "id": 86.0,
+    "city": "Delhi",
+    "hour": 22,
+    "zone": "3.0",
+    "battery": 2.0,
+    "status": "23.0"
+  },
+  {
+    "id": 87.0,
+    "city": "Hyderabad",
+    "hour": 2,
+    "zone": "8.0",
+    "battery": 9.0,
+    "status": "35.0"
+  },
+  {
+    "id": 88.0,
+    "city": "Hyderabad",
+    "hour": 6,
+    "zone": "5.0",
+    "battery": 10.0,
+    "status": "23.0"
+  },
+  {
+    "id": 89.0,
+    "city": "Mumbai",
+    "hour": 5,
+    "zone": "7.0",
+    "battery": 8.0,
+    "status": "57.0"
+  },
+  {
+    "id": 90.0,
+    "city": "Hyderabad",
+    "hour": 18,
+    "zone": "6.0",
+    "battery": 1.0,
+    "status": "72.0"
+  },
+  {
+    "id": 91.0,
+    "city": "Delhi",
+    "hour": 20,
+    "zone": "8.0",
+    "battery": 1.0,
+    "status": "40.0"
+  },
+  {
+    "id": 92.0,
+    "city": "Hyderabad",
+    "hour": 7,
+    "zone": "7.0",
+    "battery": 2.0,
+    "status": "70.0"
+  },
+  {
+    "id": 93.0,
+    "city": "Bengaluru",
+    "hour": 3,
+    "zone": "9.0",
+    "battery": 9.0,
+    "status": "96.0"
+  },
+  {
+    "id": 94.0,
+    "city": "Delhi",
+    "hour": 13,
+    "zone": "7.0",
+    "battery": 4.0,
+    "status": "36.0"
+  },
+  {
+    "id": 95.0,
+    "city": "Delhi",
+    "hour": 14,
+    "zone": "7.0",
+    "battery": 2.0,
+    "status": "70.0"
+  },
+  {
+    "id": 96.0,
+    "city": "Delhi",
+    "hour": 19,
+    "zone": "8.0",
+    "battery": 8.0,
+    "status": "22.0"
+  },
+  {
+    "id": 97.0,
+    "city": "Delhi",
+    "hour": 7,
+    "zone": "4.0",
+    "battery": 6.0,
+    "status": "52.0"
+  },
+  {
+    "id": 98.0,
+    "city": "Delhi",
+    "hour": 11,
+    "zone": "2.0",
+    "battery": 4.0,
+    "status": "47.0"
+  },
+  {
+    "id": 99.0,
+    "city": "Hyderabad",
+    "hour": 13,
+    "zone": "3.0",
+    "battery": 2.0,
+    "status": "84.0"
+  },
+  {
+    "id": 100.0,
+    "city": "Hyderabad",
+    "hour": 6,
+    "zone": "4.0",
+    "battery": 3.0,
+    "status": "59.0"
+  }
+]

@@ -172,6 +172,54 @@
              <div id="chart-heatmap" class="w-full h-96"></div>
         </div>
 
+        <!-- Advanced Analytics Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <!-- Hourly Trend -->
+            <div class="glass-panel p-6 rounded-xl">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-white"><i class="fas fa-clock mr-2 text-blue-400"></i> Hourly Demand vs Cancellations</h3>
+                </div>
+                <div id="chart-hourly-trend" class="w-full h-64"></div>
+            </div>
+
+            <!-- Revenue Trend -->
+            <div class="glass-panel p-6 rounded-xl">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-white"><i class="fas fa-dollar-sign mr-2 text-green-400"></i> Revenue Opportunity Lost</h3>
+                </div>
+                <div id="chart-revenue-trend" class="w-full h-64"></div>
+            </div>
+        </div>
+
+        <!-- Data Explorer Section -->
+        <div class="glass-panel p-6 rounded-xl mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-white"><i class="fas fa-table mr-2 text-gray-400"></i> Raw Data Explorer</h3>
+                <div class="flex space-x-2">
+                    <button id="btn-prev" class="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded text-sm text-white disabled:opacity-50">Previous</button>
+                    <span id="page-indicator" class="px-2 py-1 text-gray-400 text-sm">Page 1</span>
+                    <button id="btn-next" class="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded text-sm text-white disabled:opacity-50">Next</button>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="text-gray-400 border-b border-gray-700 text-sm uppercase">
+                            <th class="p-3">Ride ID</th>
+                            <th class="p-3">City</th>
+                            <th class="p-3">Hour</th>
+                            <th class="p-3">Zone</th>
+                            <th class="p-3">Battery %</th>
+                            <th class="p-3">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table-body" class="text-gray-300 text-sm divide-y divide-gray-800">
+                        <!-- Rows populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </main>
 
     <!-- Footer -->
