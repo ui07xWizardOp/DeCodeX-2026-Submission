@@ -5,21 +5,22 @@
 
 // Configuration
 const CONFIG = {
-    dataUrl: './assets/data/metrics.json',
-    chartsUrl: './assets/data/charts.json',
-    tableUrl: './assets/data/table_data.json',
+    dataUrl: 'assets/data/metrics.json',
+    chartsUrl: 'assets/data/charts.json',
+    tableUrl: 'assets/data/table_data.json',
+    itemsPerPage: 10,
     colors: {
+        primary: '#3b82f6',
         killZone: '#ef4444',
         goldilocks: '#10b981',
         warning: '#f59e0b',
-        primary: '#3b82f6',
-        text: '#f8fafc',
-        grid: '#334155'
-    },
-    itemsPerPage: 10
+        text: '#e5e7eb',
+        grid: '#374151'
+    }
 };
 
 let rawTableData = [];
+let filteredData = [];
 let currentPage = 1;
 
 // Initialization
@@ -35,9 +36,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         ]);
 
         rawTableData = tableData;
+        filteredData = tableData; // Init filtered with all data
 
         renderKPIs(metrics.kpis);
         renderCharts(charts);
+
+        // Initialize Filters
+        populateFilters();
+        setupFilters();
+
         renderTable(1);
         setupPagination();
 
@@ -46,6 +53,82 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Initialization failed:', error);
     }
 });
+
+function populateFilters() {
+    const cities = [...new Set(rawTableData.map(d => d.city))].sort();
+    const statuses = [...new Set(rawTableData.map(d => d.status))].sort();
+    // Sort zones numerically if possible, otherwise alpha
+    const zones = [...new Set(rawTableData.map(d => d.zone))].sort((a, b) => {
+        return parseInt(a) - parseInt(b) || a.localeCompare(b);
+    });
+
+    const populate = (id, items) => {
+        const sel = document.getElementById(id);
+        if (!sel) return;
+        items.forEach(item => {
+            if (!item) return;
+            const opt = document.createElement('option');
+            opt.value = item;
+            opt.textContent = item;
+            sel.appendChild(opt);
+        });
+    };
+
+    populate('filter-city', cities);
+    populate('filter-status', statuses);
+    populate('filter-zone', zones);
+
+    const hourSel = document.getElementById('filter-hour');
+    if (hourSel) {
+        for (let i = 0; i < 24; i++) {
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = `${i}:00`;
+            hourSel.appendChild(opt);
+        }
+    }
+}
+
+function setupFilters() {
+    ['filter-city', 'filter-status', 'filter-hour', 'filter-zone'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('change', applyFilters);
+    });
+
+    document.getElementById('btn-prev').addEventListener('click', () => {
+        if (currentPage > 1) renderTable(currentPage - 1);
+    });
+
+    document.getElementById('btn-next').addEventListener('click', () => {
+        const totalPages = Math.ceil(filteredData.length / CONFIG.itemsPerPage);
+        if (currentPage < totalPages) renderTable(currentPage + 1);
+    });
+}
+
+function applyFilters() {
+    const city = document.getElementById('filter-city').value;
+    const status = document.getElementById('filter-status').value;
+    const hour = document.getElementById('filter-hour').value;
+    const zone = document.getElementById('filter-zone').value;
+
+    filteredData = rawTableData.filter(row => {
+        return (!city || row.city === city) &&
+            (!status || row.status === status) &&
+            (!hour || String(row.hour) === hour) &&
+            (!zone || String(row.zone) === zone);
+    });
+
+    currentPage = 1;
+    renderTable(currentPage);
+    setupPagination();
+}
+
+function setupPagination() {
+    const totalPages = Math.ceil(filteredData.length / CONFIG.itemsPerPage);
+    document.getElementById('page-indicator').innerText = `Page ${currentPage} of ${totalPages || 1}`;
+    document.getElementById('btn-prev').disabled = currentPage === 1;
+    document.getElementById('btn-next').disabled = currentPage >= totalPages || totalPages === 0;
+}
 
 function renderKPIs(kpis) {
     animateValue("kpi-kill-zone", 0, kpis.kill_zone_rate, 2000, "%");
@@ -264,10 +347,17 @@ function renderInfraParadox(data) {
 
 // Table Logic
 function renderTable(page) {
+    currentPage = page;
     const tbody = document.getElementById('data-table-body');
     const start = (page - 1) * CONFIG.itemsPerPage;
     const end = start + CONFIG.itemsPerPage;
-    const items = rawTableData.slice(start, end);
+    const items = filteredData.slice(start, end);
+
+    if (items.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="10" class="p-4 text-center text-gray-500">No matching records found</td></tr>';
+        setupPagination();
+        return;
+    }
 
     tbody.innerHTML = items.map(row => `
         <tr class="hover:bg-gray-800 transition">
@@ -293,26 +383,16 @@ function renderTable(page) {
             </td>
         </tr>
     `).join('');
-
-    document.getElementById('page-indicator').innerText = `Page ${page}`;
-    document.getElementById('btn-prev').disabled = page === 1;
-    document.getElementById('btn-next').disabled = end >= rawTableData.length;
+    renderTable(currentPage);
 }
-
-function setupPagination() {
-    document.getElementById('btn-prev').addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage--;
-            renderTable(currentPage);
-        }
     });
 
-    document.getElementById('btn-next').addEventListener('click', () => {
-        if (currentPage * CONFIG.itemsPerPage < rawTableData.length) {
-            currentPage++;
-            renderTable(currentPage);
-        }
-    });
+document.getElementById('btn-next').addEventListener('click', () => {
+    if (currentPage * CONFIG.itemsPerPage < rawTableData.length) {
+        currentPage++;
+        renderTable(currentPage);
+    }
+});
 }
 
 // Utility
