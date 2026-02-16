@@ -1,0 +1,20 @@
+
+=== Sheet: Ride_Level_Data ===
+Columns: ['Ride_ID', 'City', 'Date', 'Hour', 'Pickup_Zone', 'Drop_Zone', 'Ride_Distance_km', 'Estimated_Fare', 'Surge_Multiplier', 'EV_Battery_%', 'Driver_Available', 'Charging_Station_Nearby', 'Weather', 'Ride_Status', 'Cancellation_By']
+Sample Row: [1.0, 'Hyderabad', datetime.datetime(2025, 1, 1, 0, 0), 5.0, 8.0, 3.0, 21.59, 374.64, 2.0, 29.0, 'Yes', 'Yes', 'Heavy Rain', 'Completed', 'NA']
+Total non-empty rows: 2501
+
+=== Sheet: Driver_Data ===
+Columns: ['Driver_ID', 'City', 'Experience_Months', 'Avg_Rating', 'Total_Rides_Last_30_Days', 'Avg_Battery_Consumption_km', 'Cancellation_Rate_%']
+Sample Row: [1.0, 'Mumbai', 38.0, 4.34, 113.0, 0.2, 11.76]
+Total non-empty rows: 401
+
+=== Sheet: Zone_Hour_Demand ===
+Columns: ['City', 'Zone', 'Hour', 'Avg_Ride_Requests', 'Avg_Cancellations']
+Sample Row: ['Mumbai', 1.0, 0.0, 177.0, 6.0]
+Total non-empty rows: 961
+
+=== Sheet: Charging_Stations ===
+Columns: ['Station_ID', 'City', 'Zone', 'Chargers_Available', 'Avg_Wait_Time_Min']
+Sample Row: ['CS200', 'Mumbai', 10.0, 2.0, 13.0]
+Total non-empty rows: 41

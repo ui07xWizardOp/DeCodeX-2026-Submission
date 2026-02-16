@@ -1,0 +1,57 @@
+Dataset loaded successfully.
+
+--- TASK 1: Demand-Supply Stress Mapping ---
+
+Ride Status Breakdown:
+Ride_Status
+Completed    1761
+Cancelled     739
+Name: count, dtype: int64
+
+Top 10 Highest Operational Risk Windows:
+                            Total_Requests  Cancellation_Rate
+City      Pickup_Zone Hour                                   
+Mumbai    1           10                 6           0.833333
+Hyderabad 7           7                  8           0.750000
+Delhi     1           5                  6           0.666667
+Bengaluru 4           5                  7           0.571429
+Mumbai    5           12                 6           0.500000
+Delhi     9           3                  6           0.500000
+                      13                 6           0.500000
+Bengaluru 9           11                 6           0.500000
+Mumbai    3           15                 7           0.428571
+          1           21                 7           0.428571
+
+Weather Impact on Cancellations:
+Weather
+Heavy Rain    0.314286
+Clear         0.296992
+Rain          0.285281
+Name: is_cancelled, dtype: float64
+
+--- TASK 2: Driver & Battery Decomposition ---
+
+Cancellation Rate by Battery Level Bin:
+Battery_Bin
+(0, 20]      0.875000
+(20, 30]     0.252632
+(30, 40]     0.236593
+(40, 50]     0.240260
+(50, 60]     0.255906
+(60, 80]     0.262810
+(80, 100]    0.278066
+Name: is_cancelled, dtype: float64
+
+Driver Availability vs Cancellation Rate:
+Driver_Available
+No     1.000000
+Yes    0.197722
+Name: is_cancelled, dtype: float64
+
+--- TASK 3: Fleet Utilization Efficiency ---
+
+Charging Station Nearby vs Cancellation Rate:
+Charging_Station_Nearby
+No     0.289062
+Yes    0.299252
+Name: is_cancelled, dtype: float64
