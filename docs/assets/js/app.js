@@ -59,6 +59,47 @@ function renderCharts(data) {
     renderInfraParadox(data.infra_paradox);
     renderHourlyTrend(data.hourly_trend);
     renderRevenueTrend(data.revenue_trend);
+
+    // New Advanced Analytics
+    renderSimpleBar(data.weather_impact, 'chart-weather', 'Temperature', '#60a5fa');
+    renderSimpleBar(data.surge_impact, 'chart-surge', 'Multiplier', '#facc15');
+    renderSimpleBar(data.driver_gap, 'chart-driver', 'Driver Status', '#ef4444');
+    renderSimpleBar(data.distance_impact, 'chart-distance', 'Trip Length', '#a855f7');
+    renderSimpleBar(data.city_impact, 'chart-city', 'City', '#6366f1', 'h');
+}
+
+function renderSimpleBar(data, elementId, xLabel, color, orientation = 'v') {
+    const ctx = document.getElementById(elementId);
+    if (!ctx || !data) return;
+
+    const isHorizontal = orientation === 'h';
+
+    const trace = {
+        x: isHorizontal ? data.values : data.labels,
+        y: isHorizontal ? data.labels : data.values,
+        type: 'bar',
+        orientation: orientation,
+        marker: { color: color, opacity: 0.8 },
+        text: data.values.map(v => `${v}%`),
+        textposition: 'auto',
+    };
+
+    const layout = {
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        font: { color: CONFIG.colors.text, family: 'Inter' },
+        margin: { t: 10, b: 40, l: isHorizontal ? 100 : 40, r: 20 },
+        xaxis: {
+            title: isHorizontal ? 'Cancellation Rate (%)' : xLabel,
+            gridcolor: CONFIG.colors.grid
+        },
+        yaxis: {
+            title: isHorizontal ? '' : 'Cancellation Rate (%)',
+            gridcolor: CONFIG.colors.grid
+        }
+    };
+
+    Plotly.newPlot(ctx, [trace], layout, { responsive: true, displayModeBar: false });
 }
 
 function renderHourlyTrend(data) {
@@ -212,10 +253,16 @@ function renderTable(page) {
 
     tbody.innerHTML = items.map(row => `
         <tr class="hover:bg-gray-800 transition">
-            <td class="p-3 font-mono text-xs">${String(row.id).substring(0, 8)}...</td>
-            <td class="p-3">${row.city}</td>
-            <td class="p-3">${row.hour}:00</td>
-            <td class="p-3">Zone ${row.zone}</td>
+            <td class="p-3 font-mono text-xs text-gray-500">#${row.id}</td>
+            <td class="p-3 font-medium">${row.city}</td>
+            <td class="p-3 text-gray-400">${row.hour}:00</td>
+            <td class="p-3 text-gray-400">Z-${row.zone}</td>
+            <td class="p-3">${row.distance || '-'}</td>
+            <td class="p-3 text-green-400 font-mono">$${row.fare ? row.fare.toFixed(2) : '0.00'}</td>
+            <td class="p-3"><span class="px-1.5 py-0.5 rounded ${row.surge > 1 ? 'bg-yellow-900 text-yellow-200' : 'bg-gray-700 text-gray-400'} text-xs">${row.surge}x</span></td>
+            <td class="p-3 flex items-center gap-2">
+                ${getWeatherIcon(row.weather)} <span class="text-sm">${row.weather}</span>
+            </td>
             <td class="p-3">
                 <span class="${row.battery < 20 ? 'text-red-400 font-bold' : 'text-green-400'}">
                     ${row.battery}%
@@ -264,6 +311,15 @@ function animateValue(id, start, end, duration, suffix = "", prefix = "") {
         if (progress < 1) window.requestAnimationFrame(step);
     };
     window.requestAnimationFrame(step);
+}
+
+function getWeatherIcon(weather) {
+    if (!weather) return '';
+    const w = weather.toLowerCase();
+    if (w.includes('rain')) return '<i class="fas fa-cloud-showers-heavy text-blue-400"></i>';
+    if (w.includes('clear') || w.includes('sunny')) return '<i class="fas fa-sun text-yellow-400"></i>';
+    if (w.includes('cloud')) return '<i class="fas fa-cloud text-gray-400"></i>';
+    return '<i class="fas fa-wind text-gray-500"></i>';
 }
 
 function downloadReport() {
