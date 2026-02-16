@@ -1283,5 +1283,69 @@
       28.9,
       29.9
     ]
+  },
+  "weather_impact": {
+    "labels": [
+      "Clear",
+      "Heavy Rain",
+      "Rain"
+    ],
+    "values": [
+      29.7,
+      31.4,
+      28.5
+    ]
+  },
+  "surge_impact": {
+    "labels": [
+      1.0,
+      1.5,
+      2.0
+    ],
+    "values": [
+      29.9,
+      26.4,
+      31.8
+    ]
+  },
+  "driver_gap": {
+    "labels": [
+      "Available",
+      "Unavailable"
+    ],
+    "values": [
+      19.8,
+      100.0
+    ]
+  },
+  "distance_impact": {
+    "labels": [
+      "0-5km",
+      "5-10km",
+      "10-15km",
+      "15-20km",
+      "20km+"
+    ],
+    "values": [
+      29.7,
+      28.4,
+      28.7,
+      30.0,
+      31.0
+    ]
+  },
+  "city_impact": {
+    "labels": [
+      "Bengaluru",
+      "Delhi",
+      "Hyderabad",
+      "Mumbai"
+    ],
+    "values": [
+      30.0,
+      28.8,
+      31.4,
+      28.2
+    ]
   }
 }
