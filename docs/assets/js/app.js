@@ -27,10 +27,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log('⚡ VoltRide Dashboard Initializing...');
 
     try {
+        const timestamp = new Date().getTime();
         const [metrics, charts, tableData] = await Promise.all([
-            fetch(CONFIG.dataUrl).then(r => r.json()),
-            fetch(CONFIG.chartsUrl).then(r => r.json()),
-            fetch(CONFIG.tableUrl).then(r => r.json())
+            fetch(`${CONFIG.dataUrl}?t=${timestamp}`).then(r => r.json()),
+            fetch(`${CONFIG.chartsUrl}?t=${timestamp}`).then(r => r.json()),
+            fetch(`${CONFIG.tableUrl}?t=${timestamp}`).then(r => r.json())
         ]);
 
         rawTableData = tableData;
@@ -81,7 +82,13 @@ function renderCharts(data) {
 
 function renderSimpleBar(data, elementId, xLabel, color, orientation = 'v') {
     const ctx = document.getElementById(elementId);
-    if (!ctx || !data) return;
+    if (!ctx) return;
+
+    if (!data || !data.values || data.values.length === 0) {
+        ctx.innerHTML = '<div class="flex items-center justify-center h-full text-gray-500">No Data Available</div>';
+        console.warn(`No data for chart: ${elementId}`);
+        return;
+    }
 
     const isHorizontal = orientation === 'h';
 
