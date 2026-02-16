@@ -7,17 +7,22 @@ import datetime
 DATA_FILE = "DecodeX_VoltRide_Dataset.xlsx"
 OUTPUT_DIR = "docs/assets/data"
 
-# Column Mapping (0-based)
+# Column Mapping (0-based) based on debug output
 COL_RIDE_ID = 0
 COL_CITY = 1
 COL_DATE = 2
 COL_HOUR = 3
 COL_PICKUP_ZONE = 4
-COL_BATTERY = 5
-COL_DRIVER_AVAIL = 6
-COL_STATION_NEARBY = 7
-COL_WEATHER = 8
-COL_STATUS = 9
+COL_DROP_ZONE = 5
+COL_DISTANCE = 6
+COL_FARE = 7
+COL_SURGE = 8
+COL_BATTERY = 9
+COL_DRIVER_AVAIL = 10
+COL_STATION_NEARBY = 11
+COL_WEATHER = 12
+COL_STATUS = 13
+COL_CANCEL_BY = 14
 
 def generate_full_data():
     print(f"Reading {DATA_FILE} with openpyxl...")
@@ -41,13 +46,15 @@ def generate_full_data():
     goldilocks_total = 0
     goldilocks_cancelled = 0
     
+    # Revenue
+    revenue_lost_total = 0
+    
     # Hourly Data (0-23)
     hourly_demand = [0] * 24
     hourly_cancellations = [0] * 24
+    hourly_revenue_lost = [0] * 24
     
     # Heatmap (Zone x Hour). Key: ZoneName, Value: [list of 24 ints for cancellations]
-    # We will aggregate count and failures to calc rate later
-    # Structure: { "City - Zone": { "total": [0]*24, "cancelled": [0]*24 } }
     zone_heatmap = {}
     
     # Battery Cliff
@@ -78,16 +85,23 @@ def generate_full_data():
             battery = float(row[COL_BATTERY]) if row[COL_BATTERY] is not None else 0
             station = str(row[COL_STATION_NEARBY])
             status = str(row[COL_STATUS])
-        except (ValueError, IndexError):
+            fare = float(row[COL_FARE]) if row[COL_FARE] is not None else 0
+        except (ValueError, IndexError, TypeError):
             continue # specific row error
 
         is_cancelled = 1 if status == "Cancelled" else 0
         cancelled_rides += is_cancelled
         
+        # Revenue Loss
+        if is_cancelled:
+            revenue_lost_total += fare
+        
         # Hourly
         if 0 <= hour <= 23:
             hourly_demand[hour] += 1
             hourly_cancellations[hour] += is_cancelled
+            if is_cancelled:
+                hourly_revenue_lost[hour] += fare
             
         # Heatmap
         zone_id = f"{city} - Z{zone}"
@@ -100,13 +114,13 @@ def generate_full_data():
         if battery <= 20:
             kill_zone_total += 1
             kill_zone_cancelled += is_cancelled
-            bin_idx = 0
         # Goldilocks (30-60)
         elif 30 < battery <= 60:
             goldilocks_total += 1
             goldilocks_cancelled += is_cancelled
             
         # Battery Bins logic
+        bin_idx = 0
         if battery <= 20: bin_idx = 0
         elif battery <= 30: bin_idx = 1
         elif battery <= 40: bin_idx = 2
@@ -142,17 +156,15 @@ def generate_full_data():
     kill_zone_rate = (kill_zone_cancelled / kill_zone_total * 100) if kill_zone_total else 0
     goldilocks_rate = (goldilocks_cancelled / goldilocks_total * 100) if goldilocks_total else 0
     
-    # Revenue (Estimate $25 per ride)
-    avg_fare = 25
-    revenue_lost = cancelled_rides * avg_fare
-    revenue_trend = [(c * avg_fare) for c in hourly_cancellations]
+    # Revenue Trend - Round to integers
+    revenue_trend = [round(r) for r in hourly_revenue_lost]
 
     # Metrics JSON
     metrics = {
         "kpis": {
             "kill_zone_rate": round(kill_zone_rate, 1),
             "baseline_rate": round(baseline_rate, 1),
-            "revenue_loss": revenue_lost,
+            "revenue_loss": round(revenue_lost_total),
             "goldilocks_rate": round(goldilocks_rate, 1),
             "total_demand": total_rides,
             "completed_rides": total_rides - cancelled_rides
@@ -223,6 +235,7 @@ def generate_full_data():
         json.dump(raw_data, f, indent=2)
         
     print(f"Successfully processed {total_rides} rows.")
+    print(f"Total Revenue Lost: ${revenue_lost_total:,.2f}")
     print("Generated metrics.json, charts.json, table_data.json")
 
 if __name__ == "__main__":

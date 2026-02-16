@@ -4,799 +4,799 @@
     "city": "Hyderabad",
     "hour": 5,
     "zone": "8.0",
-    "battery": 3.0,
-    "status": "29.0"
+    "battery": 29.0,
+    "status": "Completed"
   },
   {
     "id": 2.0,
     "city": "Mumbai",
     "hour": 13,
     "zone": "5.0",
-    "battery": 4.0,
-    "status": "61.0"
+    "battery": 61.0,
+    "status": "Completed"
   },
   {
     "id": 3.0,
     "city": "Delhi",
     "hour": 11,
     "zone": "5.0",
-    "battery": 5.0,
-    "status": "30.0"
+    "battery": 30.0,
+    "status": "Completed"
   },
   {
     "id": 4.0,
     "city": "Bengaluru",
     "hour": 22,
     "zone": "9.0",
-    "battery": 7.0,
-    "status": "17.0"
+    "battery": 17.0,
+    "status": "Cancelled"
   },
   {
     "id": 5.0,
     "city": "Hyderabad",
     "hour": 19,
     "zone": "5.0",
-    "battery": 2.0,
-    "status": "34.0"
+    "battery": 34.0,
+    "status": "Completed"
   },
   {
     "id": 6.0,
     "city": "Hyderabad",
     "hour": 2,
     "zone": "4.0",
-    "battery": 10.0,
-    "status": "84.0"
+    "battery": 84.0,
+    "status": "Completed"
   },
   {
     "id": 7.0,
     "city": "Hyderabad",
     "hour": 23,
     "zone": "5.0",
-    "battery": 9.0,
-    "status": "98.0"
+    "battery": 98.0,
+    "status": "Completed"
   },
   {
     "id": 8.0,
     "city": "Hyderabad",
     "hour": 23,
     "zone": "4.0",
-    "battery": 1.0,
-    "status": "63.0"
+    "battery": 63.0,
+    "status": "Cancelled"
   },
   {
     "id": 9.0,
     "city": "Mumbai",
     "hour": 23,
     "zone": "4.0",
-    "battery": 9.0,
-    "status": "87.0"
+    "battery": 87.0,
+    "status": "Cancelled"
   },
   {
     "id": 10.0,
     "city": "Delhi",
     "hour": 9,
     "zone": "8.0",
-    "battery": 6.0,
-    "status": "95.0"
+    "battery": 95.0,
+    "status": "Completed"
   },
   {
     "id": 11.0,
     "city": "Bengaluru",
     "hour": 2,
     "zone": "8.0",
-    "battery": 4.0,
-    "status": "57.0"
+    "battery": 57.0,
+    "status": "Cancelled"
   },
   {
     "id": 12.0,
     "city": "Hyderabad",
     "hour": 18,
     "zone": "2.0",
-    "battery": 5.0,
-    "status": "80.0"
+    "battery": 80.0,
+    "status": "Cancelled"
   },
   {
     "id": 13.0,
     "city": "Mumbai",
     "hour": 13,
     "zone": "2.0",
-    "battery": 8.0,
-    "status": "77.0"
+    "battery": 77.0,
+    "status": "Cancelled"
   },
   {
     "id": 14.0,
     "city": "Delhi",
     "hour": 6,
     "zone": "1.0",
-    "battery": 3.0,
-    "status": "71.0"
+    "battery": 71.0,
+    "status": "Cancelled"
   },
   {
     "id": 15.0,
     "city": "Bengaluru",
     "hour": 8,
     "zone": "1.0",
-    "battery": 6.0,
-    "status": "22.0"
+    "battery": 22.0,
+    "status": "Completed"
   },
   {
     "id": 16.0,
     "city": "Bengaluru",
     "hour": 16,
     "zone": "7.0",
-    "battery": 10.0,
-    "status": "56.0"
+    "battery": 56.0,
+    "status": "Completed"
   },
   {
     "id": 17.0,
     "city": "Bengaluru",
     "hour": 6,
     "zone": "1.0",
-    "battery": 10.0,
-    "status": "93.0"
+    "battery": 93.0,
+    "status": "Completed"
   },
   {
     "id": 18.0,
     "city": "Mumbai",
     "hour": 5,
     "zone": "9.0",
-    "battery": 7.0,
-    "status": "79.0"
+    "battery": 79.0,
+    "status": "Completed"
   },
   {
     "id": 19.0,
     "city": "Hyderabad",
     "hour": 12,
     "zone": "10.0",
-    "battery": 3.0,
-    "status": "85.0"
+    "battery": 85.0,
+    "status": "Cancelled"
   },
   {
     "id": 20.0,
     "city": "Bengaluru",
     "hour": 15,
     "zone": "3.0",
-    "battery": 10.0,
-    "status": "91.0"
+    "battery": 91.0,
+    "status": "Completed"
   },
   {
     "id": 21.0,
     "city": "Mumbai",
     "hour": 1,
     "zone": "8.0",
-    "battery": 4.0,
-    "status": "67.0"
+    "battery": 67.0,
+    "status": "Completed"
   },
   {
     "id": 22.0,
     "city": "Mumbai",
     "hour": 8,
     "zone": "7.0",
-    "battery": 10.0,
-    "status": "83.0"
+    "battery": 83.0,
+    "status": "Completed"
   },
   {
     "id": 23.0,
     "city": "Hyderabad",
     "hour": 8,
     "zone": "8.0",
-    "battery": 1.0,
-    "status": "75.0"
+    "battery": 75.0,
+    "status": "Completed"
   },
   {
     "id": 24.0,
     "city": "Hyderabad",
     "hour": 6,
     "zone": "2.0",
-    "battery": 2.0,
-    "status": "88.0"
+    "battery": 88.0,
+    "status": "Completed"
   },
   {
     "id": 25.0,
     "city": "Mumbai",
     "hour": 9,
     "zone": "4.0",
-    "battery": 9.0,
-    "status": "65.0"
+    "battery": 65.0,
+    "status": "Completed"
   },
   {
     "id": 26.0,
     "city": "Mumbai",
     "hour": 5,
     "zone": "10.0",
-    "battery": 6.0,
-    "status": "95.0"
+    "battery": 95.0,
+    "status": "Completed"
   },
   {
     "id": 27.0,
     "city": "Hyderabad",
     "hour": 13,
     "zone": "2.0",
-    "battery": 4.0,
-    "status": "52.0"
+    "battery": 52.0,
+    "status": "Completed"
   },
   {
     "id": 28.0,
     "city": "Hyderabad",
     "hour": 0,
     "zone": "3.0",
-    "battery": 3.0,
-    "status": "63.0"
+    "battery": 63.0,
+    "status": "Completed"
   },
   {
     "id": 29.0,
     "city": "Bengaluru",
     "hour": 21,
     "zone": "3.0",
-    "battery": 6.0,
-    "status": "45.0"
+    "battery": 45.0,
+    "status": "Cancelled"
   },
   {
     "id": 30.0,
     "city": "Bengaluru",
     "hour": 10,
     "zone": "6.0",
-    "battery": 3.0,
-    "status": "80.0"
+    "battery": 80.0,
+    "status": "Completed"
   },
   {
     "id": 31.0,
     "city": "Hyderabad",
     "hour": 0,
     "zone": "7.0",
-    "battery": 2.0,
-    "status": "68.0"
+    "battery": 68.0,
+    "status": "Cancelled"
   },
   {
     "id": 32.0,
     "city": "Mumbai",
     "hour": 13,
     "zone": "2.0",
-    "battery": 10.0,
-    "status": "23.0"
+    "battery": 23.0,
+    "status": "Completed"
   },
   {
     "id": 33.0,
     "city": "Mumbai",
     "hour": 18,
     "zone": "4.0",
-    "battery": 7.0,
-    "status": "75.0"
+    "battery": 75.0,
+    "status": "Completed"
   },
   {
     "id": 34.0,
     "city": "Hyderabad",
     "hour": 6,
     "zone": "2.0",
-    "battery": 5.0,
-    "status": "95.0"
+    "battery": 95.0,
+    "status": "Completed"
   },
   {
     "id": 35.0,
     "city": "Delhi",
     "hour": 10,
     "zone": "1.0",
-    "battery": 1.0,
-    "status": "27.0"
+    "battery": 27.0,
+    "status": "Completed"
   },
   {
     "id": 36.0,
     "city": "Mumbai",
     "hour": 19,
     "zone": "3.0",
-    "battery": 9.0,
-    "status": "65.0"
+    "battery": 65.0,
+    "status": "Completed"
   },
   {
     "id": 37.0,
     "city": "Mumbai",
     "hour": 23,
     "zone": "10.0",
-    "battery": 5.0,
-    "status": "88.0"
+    "battery": 88.0,
+    "status": "Completed"
   },
   {
     "id": 38.0,
     "city": "Hyderabad",
     "hour": 6,
     "zone": "3.0",
-    "battery": 8.0,
-    "status": "61.0"
+    "battery": 61.0,
+    "status": "Completed"
   },
   {
     "id": 39.0,
     "city": "Delhi",
     "hour": 16,
     "zone": "6.0",
-    "battery": 4.0,
-    "status": "51.0"
+    "battery": 51.0,
+    "status": "Completed"
   },
   {
     "id": 40.0,
     "city": "Mumbai",
     "hour": 23,
     "zone": "8.0",
-    "battery": 3.0,
-    "status": "66.0"
+    "battery": 66.0,
+    "status": "Cancelled"
   },
   {
     "id": 41.0,
     "city": "Hyderabad",
     "hour": 8,
     "zone": "10.0",
-    "battery": 8.0,
-    "status": "45.0"
+    "battery": 45.0,
+    "status": "Completed"
   },
   {
     "id": 42.0,
     "city": "Delhi",
     "hour": 13,
     "zone": "3.0",
-    "battery": 4.0,
-    "status": "34.0"
+    "battery": 34.0,
+    "status": "Completed"
   },
   {
     "id": 43.0,
     "city": "Mumbai",
     "hour": 20,
     "zone": "5.0",
-    "battery": 9.0,
-    "status": "93.0"
+    "battery": 93.0,
+    "status": "Cancelled"
   },
   {
     "id": 44.0,
     "city": "Bengaluru",
     "hour": 7,
     "zone": "7.0",
-    "battery": 8.0,
-    "status": "87.0"
+    "battery": 87.0,
+    "status": "Completed"
   },
   {
     "id": 45.0,
     "city": "Mumbai",
     "hour": 18,
     "zone": "10.0",
-    "battery": 3.0,
-    "status": "83.0"
+    "battery": 83.0,
+    "status": "Completed"
   },
   {
     "id": 46.0,
     "city": "Delhi",
     "hour": 8,
     "zone": "4.0",
-    "battery": 10.0,
-    "status": "30.0"
+    "battery": 30.0,
+    "status": "Completed"
   },
   {
     "id": 47.0,
     "city": "Bengaluru",
     "hour": 17,
     "zone": "3.0",
-    "battery": 6.0,
-    "status": "19.0"
+    "battery": 19.0,
+    "status": "Cancelled"
   },
   {
     "id": 48.0,
     "city": "Bengaluru",
     "hour": 2,
     "zone": "7.0",
-    "battery": 6.0,
-    "status": "43.0"
+    "battery": 43.0,
+    "status": "Completed"
   },
   {
     "id": 49.0,
     "city": "Mumbai",
     "hour": 0,
     "zone": "6.0",
-    "battery": 1.0,
-    "status": "99.0"
+    "battery": 99.0,
+    "status": "Completed"
   },
   {
     "id": 50.0,
     "city": "Bengaluru",
     "hour": 5,
     "zone": "9.0",
-    "battery": 6.0,
-    "status": "34.0"
+    "battery": 34.0,
+    "status": "Completed"
   },
   {
     "id": 51.0,
     "city": "Delhi",
     "hour": 9,
     "zone": "2.0",
-    "battery": 7.0,
-    "status": "33.0"
+    "battery": 33.0,
+    "status": "Completed"
   },
   {
     "id": 52.0,
     "city": "Hyderabad",
     "hour": 4,
     "zone": "3.0",
-    "battery": 9.0,
-    "status": "95.0"
+    "battery": 95.0,
+    "status": "Completed"
   },
   {
     "id": 53.0,
     "city": "Hyderabad",
     "hour": 19,
     "zone": "6.0",
-    "battery": 8.0,
-    "status": "89.0"
+    "battery": 89.0,
+    "status": "Completed"
   },
   {
     "id": 54.0,
     "city": "Hyderabad",
     "hour": 15,
     "zone": "2.0",
-    "battery": 1.0,
-    "status": "18.0"
+    "battery": 18.0,
+    "status": "Cancelled"
   },
   {
     "id": 55.0,
     "city": "Mumbai",
     "hour": 1,
     "zone": "9.0",
-    "battery": 4.0,
-    "status": "40.0"
+    "battery": 40.0,
+    "status": "Completed"
   },
   {
     "id": 56.0,
     "city": "Hyderabad",
     "hour": 13,
     "zone": "5.0",
-    "battery": 2.0,
-    "status": "60.0"
+    "battery": 60.0,
+    "status": "Cancelled"
   },
   {
     "id": 57.0,
     "city": "Mumbai",
     "hour": 20,
     "zone": "2.0",
-    "battery": 7.0,
-    "status": "66.0"
+    "battery": 66.0,
+    "status": "Completed"
   },
   {
     "id": 58.0,
     "city": "Delhi",
     "hour": 14,
     "zone": "3.0",
-    "battery": 10.0,
-    "status": "41.0"
+    "battery": 41.0,
+    "status": "Cancelled"
   },
   {
     "id": 59.0,
     "city": "Mumbai",
     "hour": 16,
     "zone": "2.0",
-    "battery": 6.0,
-    "status": "88.0"
+    "battery": 88.0,
+    "status": "Cancelled"
   },
   {
     "id": 60.0,
     "city": "Mumbai",
     "hour": 19,
     "zone": "8.0",
-    "battery": 9.0,
-    "status": "34.0"
+    "battery": 34.0,
+    "status": "Cancelled"
   },
   {
     "id": 61.0,
     "city": "Bengaluru",
     "hour": 12,
     "zone": "5.0",
-    "battery": 5.0,
-    "status": "70.0"
+    "battery": 70.0,
+    "status": "Completed"
   },
   {
     "id": 62.0,
     "city": "Hyderabad",
     "hour": 12,
     "zone": "5.0",
-    "battery": 9.0,
-    "status": "79.0"
+    "battery": 79.0,
+    "status": "Completed"
   },
   {
     "id": 63.0,
     "city": "Delhi",
     "hour": 15,
     "zone": "1.0",
-    "battery": 7.0,
-    "status": "90.0"
+    "battery": 90.0,
+    "status": "Completed"
   },
   {
     "id": 64.0,
     "city": "Mumbai",
     "hour": 17,
     "zone": "5.0",
-    "battery": 5.0,
-    "status": "33.0"
+    "battery": 33.0,
+    "status": "Completed"
   },
   {
     "id": 65.0,
     "city": "Mumbai",
     "hour": 18,
     "zone": "4.0",
-    "battery": 7.0,
-    "status": "34.0"
+    "battery": 34.0,
+    "status": "Completed"
   },
   {
     "id": 66.0,
     "city": "Mumbai",
     "hour": 0,
     "zone": "6.0",
-    "battery": 7.0,
-    "status": "42.0"
+    "battery": 42.0,
+    "status": "Cancelled"
   },
   {
     "id": 67.0,
     "city": "Hyderabad",
     "hour": 21,
     "zone": "10.0",
-    "battery": 3.0,
-    "status": "78.0"
+    "battery": 78.0,
+    "status": "Completed"
   },
   {
     "id": 68.0,
     "city": "Hyderabad",
     "hour": 7,
     "zone": "5.0",
-    "battery": 9.0,
-    "status": "90.0"
+    "battery": 90.0,
+    "status": "Completed"
   },
   {
     "id": 69.0,
     "city": "Bengaluru",
     "hour": 21,
     "zone": "4.0",
-    "battery": 2.0,
-    "status": "89.0"
+    "battery": 89.0,
+    "status": "Completed"
   },
   {
     "id": 70.0,
     "city": "Delhi",
     "hour": 15,
     "zone": "5.0",
-    "battery": 5.0,
-    "status": "74.0"
+    "battery": 74.0,
+    "status": "Completed"
   },
   {
     "id": 71.0,
     "city": "Hyderabad",
     "hour": 2,
     "zone": "8.0",
-    "battery": 7.0,
-    "status": "33.0"
+    "battery": 33.0,
+    "status": "Completed"
   },
   {
     "id": 72.0,
     "city": "Mumbai",
     "hour": 9,
     "zone": "8.0",
-    "battery": 7.0,
-    "status": "33.0"
+    "battery": 33.0,
+    "status": "Completed"
   },
   {
     "id": 73.0,
     "city": "Delhi",
     "hour": 1,
     "zone": "3.0",
-    "battery": 6.0,
-    "status": "48.0"
+    "battery": 48.0,
+    "status": "Completed"
   },
   {
     "id": 74.0,
     "city": "Hyderabad",
     "hour": 23,
     "zone": "7.0",
-    "battery": 3.0,
-    "status": "74.0"
+    "battery": 74.0,
+    "status": "Completed"
   },
   {
     "id": 75.0,
     "city": "Hyderabad",
     "hour": 22,
     "zone": "7.0",
-    "battery": 8.0,
-    "status": "16.0"
+    "battery": 16.0,
+    "status": "Cancelled"
   },
   {
     "id": 76.0,
     "city": "Mumbai",
     "hour": 20,
     "zone": "3.0",
-    "battery": 5.0,
-    "status": "69.0"
+    "battery": 69.0,
+    "status": "Cancelled"
   },
   {
     "id": 77.0,
     "city": "Hyderabad",
     "hour": 14,
     "zone": "7.0",
-    "battery": 3.0,
-    "status": "81.0"
+    "battery": 81.0,
+    "status": "Completed"
   },
   {
     "id": 78.0,
     "city": "Mumbai",
     "hour": 6,
     "zone": "2.0",
-    "battery": 6.0,
-    "status": "53.0"
+    "battery": 53.0,
+    "status": "Completed"
   },
   {
     "id": 79.0,
     "city": "Delhi",
     "hour": 13,
     "zone": "10.0",
-    "battery": 9.0,
-    "status": "78.0"
+    "battery": 78.0,
+    "status": "Completed"
   },
   {
     "id": 80.0,
     "city": "Mumbai",
     "hour": 11,
     "zone": "3.0",
-    "battery": 7.0,
-    "status": "88.0"
+    "battery": 88.0,
+    "status": "Completed"
   },
   {
     "id": 81.0,
     "city": "Hyderabad",
     "hour": 13,
     "zone": "2.0",
-    "battery": 4.0,
-    "status": "61.0"
+    "battery": 61.0,
+    "status": "Completed"
   },
   {
     "id": 82.0,
     "city": "Delhi",
     "hour": 3,
     "zone": "6.0",
-    "battery": 8.0,
-    "status": "79.0"
+    "battery": 79.0,
+    "status": "Cancelled"
   },
   {
     "id": 83.0,
     "city": "Hyderabad",
     "hour": 7,
     "zone": "5.0",
-    "battery": 10.0,
-    "status": "50.0"
+    "battery": 50.0,
+    "status": "Cancelled"
   },
   {
     "id": 84.0,
     "city": "Hyderabad",
     "hour": 13,
     "zone": "6.0",
-    "battery": 1.0,
-    "status": "67.0"
+    "battery": 67.0,
+    "status": "Completed"
   },
   {
     "id": 85.0,
     "city": "Hyderabad",
     "hour": 18,
     "zone": "9.0",
-    "battery": 10.0,
-    "status": "50.0"
+    "battery": 50.0,
+    "status": "Completed"
   },
   {
     "id": 86.0,
     "city": "Delhi",
     "hour": 22,
     "zone": "3.0",
-    "battery": 2.0,
-    "status": "23.0"
+    "battery": 23.0,
+    "status": "Completed"
   },
   {
     "id": 87.0,
     "city": "Hyderabad",
     "hour": 2,
     "zone": "8.0",
-    "battery": 9.0,
-    "status": "35.0"
+    "battery": 35.0,
+    "status": "Cancelled"
   },
   {
     "id": 88.0,
     "city": "Hyderabad",
     "hour": 6,
     "zone": "5.0",
-    "battery": 10.0,
-    "status": "23.0"
+    "battery": 23.0,
+    "status": "Completed"
   },
   {
     "id": 89.0,
     "city": "Mumbai",
     "hour": 5,
     "zone": "7.0",
-    "battery": 8.0,
-    "status": "57.0"
+    "battery": 57.0,
+    "status": "Completed"
   },
   {
     "id": 90.0,
     "city": "Hyderabad",
     "hour": 18,
     "zone": "6.0",
-    "battery": 1.0,
-    "status": "72.0"
+    "battery": 72.0,
+    "status": "Completed"
   },
   {
     "id": 91.0,
     "city": "Delhi",
     "hour": 20,
     "zone": "8.0",
-    "battery": 1.0,
-    "status": "40.0"
+    "battery": 40.0,
+    "status": "Cancelled"
   },
   {
     "id": 92.0,
     "city": "Hyderabad",
     "hour": 7,
     "zone": "7.0",
-    "battery": 2.0,
-    "status": "70.0"
+    "battery": 70.0,
+    "status": "Cancelled"
   },
   {
     "id": 93.0,
     "city": "Bengaluru",
     "hour": 3,
     "zone": "9.0",
-    "battery": 9.0,
-    "status": "96.0"
+    "battery": 96.0,
+    "status": "Completed"
   },
   {
     "id": 94.0,
     "city": "Delhi",
     "hour": 13,
     "zone": "7.0",
-    "battery": 4.0,
-    "status": "36.0"
+    "battery": 36.0,
+    "status": "Completed"
   },
   {
     "id": 95.0,
     "city": "Delhi",
     "hour": 14,
     "zone": "7.0",
-    "battery": 2.0,
-    "status": "70.0"
+    "battery": 70.0,
+    "status": "Completed"
   },
   {
     "id": 96.0,
     "city": "Delhi",
     "hour": 19,
     "zone": "8.0",
-    "battery": 8.0,
-    "status": "22.0"
+    "battery": 22.0,
+    "status": "Completed"
   },
   {
     "id": 97.0,
     "city": "Delhi",
     "hour": 7,
     "zone": "4.0",
-    "battery": 6.0,
-    "status": "52.0"
+    "battery": 52.0,
+    "status": "Completed"
   },
   {
     "id": 98.0,
     "city": "Delhi",
     "hour": 11,
     "zone": "2.0",
-    "battery": 4.0,
-    "status": "47.0"
+    "battery": 47.0,
+    "status": "Cancelled"
   },
   {
     "id": 99.0,
     "city": "Hyderabad",
     "hour": 13,
     "zone": "3.0",
-    "battery": 2.0,
-    "status": "84.0"
+    "battery": 84.0,
+    "status": "Completed"
   },
   {
     "id": 100.0,
     "city": "Hyderabad",
     "hour": 6,
     "zone": "4.0",
-    "battery": 3.0,
-    "status": "59.0"
+    "battery": 59.0,
+    "status": "Cancelled"
   }
 ]
