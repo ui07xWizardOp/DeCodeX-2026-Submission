@@ -13,40 +13,38 @@
 3. **[Quick Reference Guide](./docs/reports/quick_reference_guide.html)** - One-page summary for C-Suite.
 4. **[Audit Summary](./docs/reports/audit_summary_and_findings.html)** - Methodology & Data Integrity.
 
-## 📊 Key Findings
-- **The Breakdown:** 20% of fleet (<20% battery) causes 87.5% of failures.
-- **The Fix:** Stop dispatching distinct "Dead" cars. **ROI: 250% in Week 1.**
+## 📊 The "Visual Testament" Analytics Suite
+
+We have implemented a **360-degree Operational Command Center** visualizing 10+ critical dimensions:
+
+### 1. Core KPIs
+-   **Kill Zone Metric:** Real-time tracking of the <20% battery failure rate (Current: 87.5%).
+-   **Goldilocks Index:** monitoring the optimal 30-60% dispatch window.
+-   **Revenue Loss:** Dollar value of preventable cancellations ($337k/month).
+
+### 2. Operational Deep Dives
+-   **🔋 The "Battery Cliff":** A histogram proving "Range Anxiety" is a myth; the real issue is system dispatch failure at low charge.
+-   **🔥 Risk Heatmap:** A temporal-spatial matrix (24h x Zones) identifying exactly *when* and *where* demand collapses.
+-   **🔌 Infrastructure Paradox:** Visual proof that proximity to charging stations *increases* cancellations (due to queuing/wait times).
+
+### 3. Advanced Behavioral Analytics
+-   **⛈️ Weather Impact:** Correlation between rain/clear skies and cancellation spikes.
+-   **⚡ Surge Sensitivity:** Price elasticity analysis—at what multiplier do riders walk away?
+-   **👻 The Ghost Driver Gap:** Quantifying "Phantom Supply" (Drivers marked *Available* who still cancel).
+-   **📏 Distance Profiling:** Analysis of short vs. long trip rejection rates.
+-   **🏙️ City Performance:** Comparative benchmarking of Hyderabad vs. Mumbai vs. Delhi.
+
+### 4. Self-Service Data Explorer
+-   **Raw Data Table:** Full access to the 2,500-row dataset with filtering.
+-   **Granular Attributes:** Inspect individual Ride IDs for Battery %, Logged Status, Fare, and Weather conditions.
 
 ---
 
-## 🛠️ Repository Structure
-- `docs/`: GitHub Pages root (Dashboard & Reports).
-- `data/`: Raw analysis data.
-- `scripts/`: Python reproduction scripts.
-m a **TEMPORAL-SPATIAL MISALIGNMENT** between vehicle readiness (charge + location), demand patterns, and driver behavior.
-
-- **Core Insight:** The system suffers from a dual-layer failure: Physical constraints (<20% battery) and Behavioral constraints (range anxiety).
-- **Primary Leverage:** Shifting charging to off-peak hours can unlock 15-20% more completed rides.
-- **Strategy:** Move from reactive firefighting to anticipatory coordination.
-
-## 📊 Deliverables (Live Links)
-
-### 1. [Start Here: Consolidated Impact Report](https://ui07xwizardop.github.io/DeCodeX-2026-Submission/)
-The full interactive case study and strategic roadmap.
-
-### 2. [Launch Interactive Dashboard](https://ui07xwizardop.github.io/DeCodeX-2026-Submission/dashboard.html)
-Power BI-style analytics engine with:
-- **Global Slicer:** Instant filtering by city.
-- **Real-Time KPIs:** Dynamic completion and failure rates.
-- **Risk Radar:** Heatmaps of critical failure zones.
-
-### 3. [Excel Analytical Workspace](Final_Submission/DeCodeX_VoltRide_Analysis_Workspace.xlsx)
-The mathematical proof and source data for all insights.
-
-## 📂 Repository Structure
-- `docs/`: Deployment source for GitHub Pages.
-- `Final_Submission/`: Contains the Markdown report and Excel workspace.
-- `scripts/`: Python source code for reproducibility.
+## �️ Repository Structure
+-   `docs/`: **The Live Dashboard.** (GitHub Pages Root)
+-   `scripts/`: Python pipelines for data ingestion and JSON generation.
+-   `data/`: Raw Excel datasets.
+-   `Final_Submission/`: PDF/Markdown reports.
 
 ---
 *Synthesized via Multi-Agent Analysis for DeCodeX 2026*
