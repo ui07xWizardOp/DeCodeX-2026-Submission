@@ -54,18 +54,29 @@ function renderKPIs(kpis) {
 }
 
 function renderCharts(data) {
-    renderBatteryCliff(data.battery_cliff);
-    renderHeapmap(data.heatmap);
-    renderInfraParadox(data.infra_paradox);
-    renderHourlyTrend(data.hourly_trend);
-    renderRevenueTrend(data.revenue_trend);
+    const safeRender = (fn, ...args) => {
+        try {
+            fn(...args);
+        } catch (e) {
+            console.error(`Chart render failed: ${fn.name}`, e);
+        }
+    };
 
+    console.log("Rendering core charts...", Object.keys(data));
+
+    safeRender(renderBatteryCliff, data.battery_cliff);
+    safeRender(renderHeapmap, data.heatmap);
+    safeRender(renderInfraParadox, data.infra_paradox);
+    safeRender(renderHourlyTrend, data.hourly_trend);
+    safeRender(renderRevenueTrend, data.revenue_trend);
+
+    console.log("Rendering advanced analytics...");
     // New Advanced Analytics
-    renderSimpleBar(data.weather_impact, 'chart-weather', 'Temperature', '#60a5fa');
-    renderSimpleBar(data.surge_impact, 'chart-surge', 'Multiplier', '#facc15');
-    renderSimpleBar(data.driver_gap, 'chart-driver', 'Driver Status', '#ef4444');
-    renderSimpleBar(data.distance_impact, 'chart-distance', 'Trip Length', '#a855f7');
-    renderSimpleBar(data.city_impact, 'chart-city', 'City', '#6366f1', 'h');
+    safeRender(renderSimpleBar, data.weather_impact, 'chart-weather', 'Temperature', '#60a5fa');
+    safeRender(renderSimpleBar, data.surge_impact, 'chart-surge', 'Multiplier', '#facc15');
+    safeRender(renderSimpleBar, data.driver_gap, 'chart-driver', 'Driver Status', '#ef4444');
+    safeRender(renderSimpleBar, data.distance_impact, 'chart-distance', 'Trip Length', '#a855f7');
+    safeRender(renderSimpleBar, data.city_impact, 'chart-city', 'City', '#6366f1', 'h');
 }
 
 function renderSimpleBar(data, elementId, xLabel, color, orientation = 'v') {
